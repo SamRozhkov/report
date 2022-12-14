@@ -24,3 +24,8 @@ a {
     background: black;
   }
 }
+
+.logo {
+    margin: 0;
+    filter: invert(1);
+}
