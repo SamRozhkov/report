@@ -1,9 +1,9 @@
 import 'antd/dist/reset.css'
-import '../styles/globals.css'
+/*import '../styles/globals.css'*/
 import type { AppProps } from 'next/app'
-import {ConfigProvider, Layout, Menu } from 'antd'
-import {useState} from "react";
-const {Header, Sider, Content} = Layout;
+import { ConfigProvider, Layout, Menu } from 'antd'
+import { useState } from "react";
+const { Header, Sider, Content, Footer } = Layout;
 import Image from 'next/image'
 import logo from '../public/logo.svg'
 import styles from '../styles/App.module.css'
@@ -57,6 +57,7 @@ export default function App({ Component, pageProps }: AppProps) {
                         <Component {...pageProps}/>
                     </Content>
                 </Layout>
+                <Footer></Footer>
             </Layout>
 
             )
