@@ -11,13 +11,19 @@ export default function Home() {
         style={{ padding: 20 }}>
         <Space>
             <Select mode='multiple'
-                placeholder='Выбрать организацию'
+                placeholder='Организация'
                 style={{ width: 250 }}
-                />
+                onSelect={(e, option) => {console.log(option)}}
+                options={[
+                    {label: 'asd', value: 1},
+                    {label: 'asd', value: 2},
+                ]}
+            />
 
             <Select
                 placeholder='Отчет'
                 style={{ width: 250 }}
+
             />
         </Space>
     </Content>

@@ -18,6 +18,11 @@ type MenuClickEventHandler =
     domEvent: any;
 }
 
+async function getData(){
+    const res = await fetch('https://fakerapi.it/api/v1/custom?id=number&name=name', { cache: 'reload' })
+    return res.json()
+}
+
 export default function App({ Component, pageProps }: AppProps) {
     const router = useRouter()
     const [collapsed, setCollapsed] = useState(false)
@@ -25,6 +30,10 @@ export default function App({ Component, pageProps }: AppProps) {
     const handleClick = (e: MenuClickEventHandler) => {
         router.push(e.key)
     }
+
+
+    const data =  getData()
+    console.log(data)
 
     return (
             <Layout>
@@ -39,15 +48,20 @@ export default function App({ Component, pageProps }: AppProps) {
                             theme="dark"
                             items={
                                 [{
-                                    key: '/',
+                                    key: 'index',
                                     label: 'Отчеты',
                                     icon: <TbReport/>,
-                                    onClick:  () => {router.push('/')}
+                                    onClick:  () => { router.push('/') }
                                 },{
                                     key: 'test',
                                     label: "Test",
                                     icon: <TbReport/>,
-                                    onClick:  handleClick
+                                    onClick:  () => { router.push('/test') }
+                                },{
+                                    key: 'admin',
+                                    label: "Test",
+                                    icon: <TbReport/>,
+                                    onClick:  () => { router.push('/admin') }
                                 }]
                             }
                             >
