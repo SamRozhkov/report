@@ -42,7 +42,7 @@ export default function App({ Component, pageProps }: AppProps) {
                                     key: '/',
                                     label: 'Отчеты',
                                     icon: <TbReport/>,
-                                    onClick:  handleClick
+                                    onClick:  () => {router.push('/')}
                                 },{
                                     key: 'test',
                                     label: "Test",

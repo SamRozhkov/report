@@ -13,12 +13,10 @@ export default function Home() {
             <Select mode='multiple'
                 placeholder='Выбрать организацию'
                 style={{ width: 250 }}
-                on
                 />
 
             <Select
                 placeholder='Отчет'
-                disabled={}
                 style={{ width: 250 }}
             />
         </Space>
