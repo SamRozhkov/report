@@ -2,7 +2,7 @@ import 'antd/dist/reset.css'
 /*import '../styles/globals.css'*/
 import type { AppProps } from 'next/app'
 import { ConfigProvider, Layout, Menu } from 'antd'
-import { useState } from "react";
+import {useEffect, useState} from "react";
 const { Header, Sider, Content, Footer } = Layout;
 import Image from 'next/image'
 import logo from '../public/logo.svg'
@@ -31,14 +31,10 @@ export default function App({ Component, pageProps }: AppProps) {
         router.push(e.key)
     }
 
-
-    const data =  getData()
-    console.log(data)
-
     return (
             <Layout>
                 <Header>
-                    <Image src={ logo } alt='Logo' height={52} width={52} className={styles.logo}/>
+                    <Image src={ logo } alt='Logo' height={52} width={52} className={styles.logo} priority={true} as='image'/>
                 </Header>
                 <Layout style={{ height: '100vh' }}>
                     <Sider
