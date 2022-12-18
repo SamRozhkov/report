@@ -2,3 +2,8 @@
 
     /*filter: invert(1);*/
 }
+
+.textLogo {
+    /*color: white;*/
+    filter: invert(1);
+}

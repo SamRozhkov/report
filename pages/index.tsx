@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import { Layout, Select, Space } from 'antd'
+import { Layout, Select, Space, Divider } from 'antd'
 const { Content } =  Layout
 import { useState, useEffect } from 'react'
 import useSWR from 'swr'
@@ -21,7 +21,7 @@ function LoadData(){
     }
 }
 
-export default function Home() {
+export default function Home({ data1 }) {
 
     const [active, setActive] = useState(true)
     const [organizations, setOrganizations] = useState([])
@@ -35,7 +35,8 @@ export default function Home() {
 
 return (
     <Content
-        style={{ padding: 20 }}>
+        style={{ padding: 5 }}>
+        <Divider orientation="left">Настройки</Divider>
         <Space>
             <Select mode='multiple'
                 placeholder='Организация'
@@ -59,6 +60,17 @@ return (
                 disabled={ active }
             />
         </Space>
+
     </Content>
   )
+}
+
+export async function getServerSideProps(){
+    const api = process.env.API_URL
+    const res = await fetch(api + `custom?id=number&name=name`)
+    const data1 = await res.json()
+
+    console.log(data1)
+
+    return { props: { data1 } }
 }
