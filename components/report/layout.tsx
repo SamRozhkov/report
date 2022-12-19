@@ -1,15 +1,13 @@
-import { FC, ReactNode } from 'react'
+import { ReactNode } from 'react'
 
 type layoutProps = {
     children: ReactNode,
 }
 
-const Layout:FC<layoutProps> = ({ children }) =>{
+export default function Layout ({ children }: layoutProps) {
     return (
         <>
             {children}
         </>
     )
 }
-
-export default Layout;

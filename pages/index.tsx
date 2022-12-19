@@ -4,34 +4,11 @@ import styles from '../styles/Home.module.css'
 import { Layout, Select, Space, Divider } from 'antd'
 const { Content } =  Layout
 import { useState, useEffect } from 'react'
-import useSWR from 'swr'
-
-const fetcher = async (url: any) => await fetch(url).then((res) => res.json());
-
-function LoadData(){
-    const { data, error } = useSWR('https://fakerapi.it/api/v1/custom?id=number&name=name', fetcher)
-
-    if (data != undefined){
-        return data.data.map((x: any) => (
-                {label: x.name, value: x.id })
-                )
-    }
-    else{
-        return []
-    }
-}
 
 export default function Home({ data1 }) {
 
     const [active, setActive] = useState(true)
     const [organizations, setOrganizations] = useState([])
-
-    const { data, error } = useSWR('https://fakerapi.it/api/v1/custom?id=number&name=name', fetcher)
-
-    useEffect(() => {
-        /*const result = LoadData()*/
-        /*console.log(result)*/
-    })
 
 return (
     <Content
@@ -66,11 +43,11 @@ return (
 }
 
 export async function getServerSideProps(){
-    const api = process.env.API_URL
+    const api = process.env.NEXT_PUBLIC_API_URL
     const res = await fetch(api + `custom?id=number&name=name`)
     const data1 = await res.json()
 
-    console.log(data1)
+    /*console.log(data1)*/
 
     return { props: { data1 } }
 }
