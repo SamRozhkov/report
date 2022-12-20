@@ -10,12 +10,10 @@ function Report( { report }: reportProps ){
     const router = useRouter()
     return (
             <>
-            asdas
             <Button onClick={() => {
-                router.forward()
+                router.back()
             }}>Назад</Button>
             </>
-
     )
 }
 

@@ -1,9 +1,9 @@
-import { Report } from '../../../components/report/report'
+import { ReportList } from '../../../components/report/reportList'
 
 export default function Reports(){
     return (
            <>
-            <Report></Report>
+            <ReportList></ReportList>
            </>
     )
 }
