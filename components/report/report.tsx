@@ -1,9 +1,9 @@
-import {ReportType} from "./types";
+import {Report} from "../types";
 import { Button } from 'antd'
 import { useRouter } from "next/router";
 
 type reportProps = {
-    report?: ReportType
+    report?: Report
 }
 
 function Report( { report }: reportProps ){

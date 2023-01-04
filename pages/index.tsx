@@ -1,14 +1,27 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import { Layout, Select, Space, Divider } from 'antd'
+import { Layout, Select, Space, Divider, Button } from 'antd'
 const { Content } =  Layout
 import { useState, useEffect } from 'react'
+import {useGetReportQuery} from "../services/goodApi";
+import { Report } from '../components/types'
 
-export default function Home({ data1 }) {
+export default function Home() {
 
     const [active, setActive] = useState(true)
     const [organizations, setOrganizations] = useState([])
+    const [reports, setReports] = useState<Report[]>([])
+    const { data, refetch } = useGetReportQuery()
+
+    useEffect(()=>{
+        if (data) {
+            const r:Report[] = data.map((e:Report) => {
+                return ({label: e.name, value: e.id})
+            })
+            setReports(r)
+        }
+    },[data])
 
 return (
     <Content
@@ -35,19 +48,11 @@ return (
                 placeholder='Отчет'
                 style={{ width: 250 }}
                 disabled={ active }
+                options={reports}
             />
+            <Button type='primary'>Загрузить</Button>
         </Space>
 
     </Content>
   )
-}
-
-export async function getServerSideProps(){
-    const api = process.env.NEXT_PUBLIC_API_URL
-    const res = await fetch(api + `custom?id=number&name=name`)
-    const data1 = await res.json()
-
-    /*console.log(data1)*/
-
-    return { props: { data1 } }
 }

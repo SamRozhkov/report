@@ -11,34 +11,19 @@ import { TbReport } from 'react-icons/tb'
 import { RiAdminLine } from 'react-icons/ri'
 import { useRouter } from "next/router";
 
-type MenuClickEventHandler =
-{
-    item: any;
-    key: any;
-    keyPath: any;
-    domEvent: any;
-}
-
-async function getData(){
-    const res = await fetch('https://fakerapi.it/api/v1/custom?id=number&name=name', { cache: 'reload' })
-    return res.json()
-}
+import { store } from '../services/store'
+import { Provider } from 'react-redux'
 
 export default function App({ Component, pageProps }: AppProps) {
     const router = useRouter()
-    const [collapsed, setCollapsed] = useState(false)
-
-    const handleClick = (e: MenuClickEventHandler) => {
-        router.push(e.key)
-    }
-
     return (
+        <Provider store={store}>
             <Layout>
                 <Header style={{ display: 'inline-flex' }}>
                     <Image src={ logo } alt='Logo' height={52} width={52} className={styles.logo} priority={true} />
-                    <h1 className={ styles.textLogo } >Отчеты</h1>
-
+                    <h1 className={ styles.textLogo } >ARService</h1>
                 </Header>
+
                 <Layout style={{ height: '100vh' }}>
                     <Sider
                         collapsible defaultCollapsed={false}
@@ -85,6 +70,6 @@ export default function App({ Component, pageProps }: AppProps) {
                 </Layout>
                 <Footer></Footer>
             </Layout>
-
-            )
+        </Provider>
+        )
 }

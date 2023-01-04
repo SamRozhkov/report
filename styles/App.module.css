@@ -4,6 +4,7 @@
 }
 
 .textLogo {
+    margin-left: 20px;
     /*color: white;*/
     filter: invert(1);
 }
